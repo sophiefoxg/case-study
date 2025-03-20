@@ -18,24 +18,28 @@ rawdata/
     Hpb_2_2.fq.gz  Hpb_5_1.fq.gz  Naive_2_2.fq.gz  Naive_5_1.fq.gz
     Hpb_3_1.fq.gz  Hpb_5_2.fq.gz  Naive_3_1.fq.gz  Naive_5_2.fq.gz
 
-PRE-PROCESSING   
-In command line:
+#### PRE-PROCESSING   FOLDER
+In UNIX system:
 Execute all slurm scripts 
-1-fastQCP.slurm, Quality checks, trimming (adapter removal), quality check
+
+# 1-fastQCP.slurm, Quality checks, trimming (adapter removal), quality check
   -> OUTPUT: raw data quality check multiqc_report_raw.html, trimmed reads e.g."Hpb_1_trim_R1.fq.gz" , trimmed data quality check multiqc_report_trim.html
-2-star_index_genome.slurm , indexes genome using STAR from: 
+
+# 2-star_index_genome.slurm , indexes genome using STAR from: 
       Mus_musculus_balbcj.BALB_cJ_v1.113.gtf
       Mus_musculus_balbcj.BALB_cJ_v1.dna_sm.toplevel.fa
-->  OUTPUT: SA files, genome parameters etc
-3-star.slurm , aligninging trimmed data to genome (STAR), QC alignment
-->  OUTPUT: STAR alignment files for each sample, multiqc_report_star.html
-4-featurecounts.slurm , creates feature count files for each sample
+->  OUTPUT: SA files, genome parameters etc.
 
-5. extraction.sh
+# 3-star.slurm , aligning trimmed data to genome (STAR), QC alignment
+->  OUTPUT: STAR alignment files for each sample "Aligned.out.bam", multiqc_report_star.html
+
+# 4-featurecounts.slurm , creates feature count files for each sample
+
+# 5. extraction.sh
 extraction of featurecount information into "sample".tsv files and a count_matrix.csv file
 Targets.txt file created manually
 
-ALL THAT'S REQUIRED FOR ANALYSIS IS:
+### ALL THAT'S REQUIRED FOR ANALYSIS IS:
 
 Before data tidying:
 Targets.txt
@@ -47,9 +51,15 @@ Targets2.txt
 featureCount2
 
 
-RNA-seq ANALYSIS
-R
-Deseq.R:
+#### RNA-seq ANALYSIS R
+## Deseq.R:
+Packages: devtools v2.4.5, SARTools v1.8.1, DESeq2 1.42.1
+
+processes feature count files, filters poor quality, unaligned samples. normalises counts
+identifies differentially expressed genes using parametric dispersion estimation. generates diagnostic plots and summary reports
+# outputs: DietvsWorm.html DietvsWorm.RData
+
+
 
 DEGs.R
 

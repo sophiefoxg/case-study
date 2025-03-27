@@ -64,13 +64,32 @@ they were in the format MGP_BALBcJ_GOOOOOOOO4
 using the online biomart tool, these IDs from upregulated and downregulated files were inputted and a list
 of ENSMUG IDs were Provided. Note some of the terms were NA and some were matched to the same ENSMUG
 ##### this script replaced "MGP" terms with the correseponding "ENSMUG" IDs using a file called matched_genes.txt 
+-> Output:upregulated_geneID.csv + downregulated_geneID.csv
 
 
-Volcano.R
+#### Volcano.R
+packages required: ggplot2 v3.5.1 and ggrepel v0.9.6
+Using the Infected_vs_Control.csv file outputted by DESEQ script, it plots upregulated and downregulated genes using the same log fold change and P.adjusted cut-offs. it labels the top 10 upregulated and downregulated genes using the files outputted from the extract.sh script
+-> Output: Volcano.png (Results folder)
 
-Bio_processes.R
+This script has the option to look at specific gene changes in the form of a barplot. As the client was interested in ALOX5 and ALOX15 these were visualised using their log2foldchange and the significance (P value). 
+-> Output: ALOX5 and ALOX15.png (Results folder)
+
+
+#### Bio_processes.R
+Packages:BiocManager_1.30.25, clusterProfiler_4.12.6 , org.Mm.eg.db_3.19.1, AnnotationDbi_1.66.0  , enrichplot_1.24.4 , ggplot2_3.5.1, DOSE_3.30.5, ggrepel_0.9.6 , biomaRt_2.60.1 , GOplot_1.0.2 , pathview_1.44.0 
+performs:
+###### Gene Ontology Enrichment (Biological Processes)
+-> Output: Dotplot, Barplot, .csv, Cnet plot
+
+###### KEGG Enrichment (Biological Processes)
+-> Output: Dotplot, Pathview analysis of specific pathways of interest
+
+###### Gene Set Enrichment Analysis:
+due to the strain version, complete gene lists could not be created for full gene set analysis. Therefore it was performed on only the differentially expressed genes.
+-> Output: GSEA.csv
 
 
 
-Packages and depdendencies:
+
 

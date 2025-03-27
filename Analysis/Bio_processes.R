@@ -4,8 +4,7 @@
 ################################################################################
 
 # 0️⃣ Install required packages if not already installed
-packages <- c("BiocManager", "clusterProfiler", "org.Mm.eg.db", "AnnotationDbi", 
-              "enrichplot", "ggplot2", "DOSE", "ggrepel", "biomaRt", "GOplot")
+packages <- c("BiocManager", "clusterProfiler", "org.Mm.eg.db", "AnnotationDbi", "enrichplot", "ggplot2", "DOSE", "ggrepel", "biomaRt", "GOplot")
 
 for (pkg in packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
@@ -92,15 +91,15 @@ cnet_up <- cnetplot(
   showCategory = 5,
   circular = TRUE,
   color.params = list(
-    foldChange = NULL,     # or pass your log2FC named vector
-    edge = TRUE            # color edges based on shared genes
+    foldChange = NULL,     
+    edge = TRUE            
   )
 )
-# Create a named vector of log2FC for your upregulated genes
+#  named vector of log2FC for your upregulated genes
 fc_vector <- upregulated_geneID$Log2FoldChange
 names(fc_vector) <- upregulated_geneID$GeneName
 
-# Now apply in the plot
+
 cnet_up <- cnetplot(
   go_up,
   showCategory = 5,
@@ -121,6 +120,8 @@ kegg_up <- enrichKEGG(gene = upregulated_geneID$EntrezID, organism = "mmu", pval
 kegg_down <- enrichKEGG(gene = downregulated_geneID$EntrezID, organism = "mmu", pvalueCutoff = 0.05)
 
 #  KEGG Visualizations
+
+
 # KEGG Upregulated Dotplot
 kegg_up_dotplot <- dotplot(kegg_up, showCategory = 15, title = "KEGG Upregulated")
 
@@ -139,10 +140,12 @@ logFC_vector <- upregulated_geneID$Log2FoldChange
 names(logFC_vector) <- upregulated_geneID$EntrezID
 
 head(logFC_vector)
-# Run pathview for the selected KEGG pathway
+
+
+
 pathview(
   gene.data    = logFC_vector,
-  pathway.id   = "mmu04610",  # Complement and coagulation cascades
+  pathway.id   = "mmu04610",  
   species      = "mmu",
   out.suffix   = "Upregulated",
   kegg.native  = TRUE,

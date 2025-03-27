@@ -1,6 +1,6 @@
 # Differential Gene Expression Analysis #
 
-## Case Study Project where data was supplied by a client, in this case the invistigation was to see how a combination of a poor diet and infection with a parasite exacerbates inflammation in the colon ##
+## Case Study Project where data was supplied by a client, in this case the investigation was to see how a combination of a poor diet and infection with a parasite exacerbates inflammation in the colon ##
 1. downloaded all raw reads and input into a folder named "rawdata"
 2. downloaded Genome from: [https://www.ensembl.org/Mus_musculus/Info/Index](https://www.ensembl.org/Mus_musculus_BALB_cJ/Info/Index)
    Mus_musculus_balbcj.BALB_cJ_v1.113.gtf
@@ -48,13 +48,13 @@ for the tidied data (samples "4" removed) use Targets2.txt
 Packages: devtools v2.4.5, SARTools v1.8.1, DESeq2 1.42.1
 
 Processes feature count files, filters poor quality, unaligned samples. normalises counts
-identifies differentially expressed genes using parametric dispersion estimation. generates diagnostic plots and summary reports
- ->outputs: DietvsWorm.html DietvsWorm.RData
+identifies differentially expressed genes using parametric dispersion estimation. generates diagnostic plots and summary reports that can be seen in the results file. Use .html files for easy comprehension. DietvsWorm2.html is the cleaned dataset.
+ ->outputs: DietvsWorm.html DietvsWorm.RData OR DietvsWorm2.html
 
 
 
 #### DEGs.R
-using the results from seseq, DEGs are indicated using log2foldchange values of >1 or <-1, with 0.05 cutoff for padjusted values to prevent false dscovery
+using the results from Deseq, DEGs are indicated using log2foldchange values of >1 or <-1, with 0.05 cutoff for p.adjusted values to prevent false discovery
 these were extracted into CSV files for downstream analysis.
 -> Outputs: upregulated.csv downregulated.csv and all_significant.csv
 
@@ -83,10 +83,10 @@ performs:
 -> Output: Dotplot, Barplot, .csv, Cnet plot
 
 ###### KEGG Enrichment (Biological Processes)
--> Output: Dotplot, Pathview analysis of specific pathways of interest
+-> Output: Dotplot, Pathview analysis of specific pathways of interest for this analysis I looked at coagulation and wound healing by request of client. Script can be edited to look at different pathways
 
 ###### Gene Set Enrichment Analysis:
-due to the strain version, complete gene lists could not be created for full gene set analysis. Therefore it was performed on only the differentially expressed genes.
+Due to the strain version, complete gene lists could not be created for full gene set analysis. Therefore it was performed on only the differentially expressed genes.
 -> Output: GSEA.csv
 
 

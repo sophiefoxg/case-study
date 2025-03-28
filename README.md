@@ -85,9 +85,19 @@ performs:
 ###### KEGG Enrichment (Biological Processes)
 -> Output: Dotplot, Pathview analysis of specific pathways of interest for this analysis I looked at coagulation and wound healing by request of client. Script can be edited to look at different pathways
 
+
+###### ENS_rename.sh
+using the biomart convert tool I was able to download the strain version gene IDs to the corresponding IDs on the GRCm39 genome.
+this file is called :
+mart_export_ENS.txt
+
+AKA using a script that converted them into a new .csv. with e ach “MGP_BALBcJ” being linked to a “ENSMUG”
+
+it reads in the Infected_vs_Control.csv from the Deseq and DEG script. and replaces the IDs to allow for easier GSEA.
+
 ###### Gene Set Enrichment Analysis:
-Due to the strain version, complete gene lists could not be created for full gene set analysis. Therefore it was performed on only the differentially expressed genes.
--> Output: GSEA.csv
+
+
 
 
 

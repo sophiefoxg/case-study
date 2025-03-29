@@ -1,6 +1,6 @@
 # Differential Gene Expression Analysis #
 
-## Case Study Project where data was supplied by a client, in this case the investigation was to see how a combination of a poor diet and infection with a parasite exacerbates inflammation in the colon ##
+## Case Study Project : data was supplied by a client, in this case the investigation was to see how a combination of a poor diet and infection with a parasite exacerbates inflammation in the colon ##
 1. downloaded all raw reads and input into a folder named "rawdata"
 2. downloaded Genome from: [https://www.ensembl.org/Mus_musculus/Info/Index](https://www.ensembl.org/Mus_musculus_BALB_cJ/Info/Index)
    Mus_musculus_balbcj.BALB_cJ_v1.113.gtf
@@ -20,23 +20,30 @@ rawdata/
 
 # PRE-PROCESSING   #
 In UNIX system:
-Execute all slurm scripts 
+Execute all slurm scripts in order 1-4
 
-#### 1-fastQCP.slurm, Quality checks, trimming (adapter removal), quality check
+#### 1-fastQCP.slurm, 
+Quality checks, trimming (adapter removal), trimmed quality check
   -> OUTPUT: raw data quality check multiqc_report_raw.html, trimmed reads e.g."Hpb_1_trim_R1.fq.gz" , trimmed data quality check multiqc_report_trim.html
 
-#### 2-star_index_genome.slurm , indexes genome using STAR from: 
+#### 2-star_index_genome.slurm 
+Indexes genome using STAR from: 
       Mus_musculus_balbcj.BALB_cJ_v1.113.gtf
       Mus_musculus_balbcj.BALB_cJ_v1.dna_sm.toplevel.fa
-->  OUTPUT: SA files, genome parameters etc.
+->  OUTPUT: SA files, Genome genomeparameters.txt etc.
 
-#### 3-star.slurm , aligning trimmed data to genome (STAR), QC alignment
+#### 3-star.slurm 
+Aligning trimmed data to genome (STAR), QC alignment
 ->  OUTPUT: STAR alignment files for each sample "Aligned.out.bam", multiqc_report_star.html
 
-#### 4-featurecounts.slurm , creates feature count files for each sample
+#### 4-featurecounts.slurm 
+Creates feature count files, quantifying gene expression at the gene level for each sample
+-> OUTPUT: Naive_1.featureCount 
+
 
 #### 5. extraction.sh
-extraction of featurecount information into "sample".tsv files and a count_matrix.csv file
+Processes of featurecount information into "sample".tsv files and a count_matrix.csv file
+metadata files:
 Targets.txt file created manually
 for the tidied data (samples "4" removed) use Targets2.txt
 

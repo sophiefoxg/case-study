@@ -87,15 +87,30 @@ performs:
 
 
 ###### ENS_rename.sh
-using the biomart convert tool I was able to download the strain version gene IDs to the corresponding IDs on the GRCm39 genome.
+Using the biomart convert tool I was able to download the strain version gene IDs to the corresponding IDs on the GRCm39 genome.
 this file is called :
 mart_export_ENS.txt
 
-AKA using a script that converted them into a new .csv. with e ach “MGP_BALBcJ” being linked to a “ENSMUG”
+AKA using a script that converted them into a new .csv. with each “MGP_BALBcJ” being linked to an “ENSMUG” identifier
 
-it reads in the Infected_vs_Control.csv from the Deseq and DEG script. and replaces the IDs to allow for easier GSEA.
+It reads in the Infected_vs_Control.csv from the Deseq and DEG script. and replaces the IDs to allow for easier GSEA.
+->Output: Infected_vs_Control_ENS.csv
 
-###### Gene Set Enrichment Analysis:
+###### GSEA.R
+#### KEGG and GO gene set enrichment analyses of entire dataset
+packages: "clusterProfiler", "org.Mm.eg.db", "enrichplot", "DOSE", "biomaRt"
+Using the Infected_vs_Control_ENS.csv, this script ranks the gene list, removes duplicate IDs and adds in adding in jitter to ensure each term has a distinct ranking value (noise to break ties between terms), which preserves the statistical assumptions of GSEA and enables accurate calculation of enrichment scores and p-values. 
+it allows for multiple visualisations for both GO and KEGG: inclusing enrichment map plots, cnet plots etc.
+
+
+
+#### GSEAapp.R
+Shiny app that allows client to set her own parameters for Log2Fold Change. For each GO biological Process term that was deemed significant, you can see what genes in that set are being up or downregulated. results are plotted using a graph.
+
+
+For full explanation of how to use this app, please look at the app explanation document 
+
+
 
 
 

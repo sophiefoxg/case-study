@@ -54,10 +54,11 @@ for the tidied data (samples "4" removed) use Targets2.txt
 #### Deseq.R:
 Packages: devtools v2.4.5, SARTools v1.8.1, DESeq2 1.42.1
 
-Processes feature count files, filters poor quality, unaligned samples. normalises counts
-identifies differentially expressed genes using parametric dispersion estimation. generates diagnostic plots and summary reports that can be seen in the results file. Use .html files for easy comprehension. DietvsWorm2.html is the cleaned dataset.
- ->outputs: DietvsWorm.html DietvsWorm.RData OR DietvsWorm2.html
-
+Processes feature count files, filters poor quality samples and unaligned reads.It normalises counts and uses parametric dispersion estimation for statistical modelling. generates diagnostic plots and summary reports of differentially expressed genes that can be seen in the results file. 
+"Control" set as the reference condition and differentially expressed genes are identified using an adjusted p-value threshold of 0.05 (Benjamini-Hochberg method).
+Using .html files for easy comprehension. DietvsWorm2.html is the cleaned dataset, using the file Targets2.txt.
+ -> Outputs: DietvsWorm.html DietvsWorm.RData OR DietvsWorm2.html
+*Note input files are located in Pre-Processing directory
 
 
 #### DEGs.R

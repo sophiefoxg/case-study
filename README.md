@@ -61,7 +61,7 @@ for the tidied data (samples "4" removed) use Targets2.txt
 
 
 
-# RNA-seq ANALYSIS 
+#  ANALYSIS 
 #### Deseq.R:
 Packages: devtools v2.4.5, SARTools v1.8.1, DESeq2 1.42.1
 

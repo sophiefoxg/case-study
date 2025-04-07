@@ -1,6 +1,13 @@
 # Differential Gene Expression Analysis #
 
 ## Case Study Project : data was supplied by a client, in this case the investigation was to see how a combination of a poor diet and infection with the helminth worm parasitic infection exacerbates inflammation in the colon ##
+
+
+#### Pipeline Overview
+
+<img width="796" alt="image" src="https://github.com/user-attachments/assets/c0aa76e2-6f42-4707-8a45-049ec752310d" />
+
+
 1. downloaded all raw reads and input into a folder named "rawdata"
 2. downloaded Genome from: [https://www.ensembl.org/Mus_musculus/Info/Index](https://www.ensembl.org/Mus_musculus_BALB_cJ/Info/Index)
    Mus_musculus_balbcj.BALB_cJ_v1.113.gtf
@@ -54,7 +61,7 @@ for the tidied data (samples "4" removed) use Targets2.txt
 
 
 
-# RNA-seq ANALYSIS 
+#  ANALYSIS 
 #### Deseq.R:
 Packages: devtools v2.4.5, SARTools v1.8.1, DESeq2 1.42.1
 
